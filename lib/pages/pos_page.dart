@@ -1,30 +1,81 @@
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  TextEditingController textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.grey,
-        title: Text('Serch'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 700),
-            child: Container(
-                child: IconButton(onPressed: () {}, icon: Icon(Icons.search))),
-          )
-        ],
-      ),
       body: Column(
         children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 60,
+            color: Colors.grey,
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 20,
+                ),
+                AnimSearchBar(
+                    width: 400,
+                    textController: textController,
+                    onSuffixTap: () {
+                      setState(() {
+                        textController.clear();
+                      });
+                    })
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 20.0, top: 20.0),
             child: Row(
               children: [
                 Container(
-                  color: Colors.cyan,
-                  height: 590,
                   width: 1275,
+                  height: 350,
+                  child: Table(
+                      border: TableBorder.all(color: Colors.green, width: 1.5),
+                      children: const [
+                        TableRow(children: [
+                          Text(
+                            "1",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                            ),
+                          ),
+                          Text(
+                            "Mohit",
+                            style: TextStyle(fontSize: 15.0),
+                          ),
+                          Text(
+                            "25",
+                            style: TextStyle(fontSize: 15.0),
+                          ),
+                        ]),
+                        TableRow(children: [
+                          Text(
+                            "1",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                            ),
+                          ),
+                          Text(
+                            "Mohit",
+                            style: TextStyle(fontSize: 15.0),
+                          ),
+                          Text(
+                            "25",
+                            style: TextStyle(fontSize: 15.0),
+                          ),
+                        ]),
+                      ]),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0),
@@ -76,41 +127,5 @@ class Profile extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class MySearchDelegate extends SearchDelegate {
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    //buil action
-    return [
-      IconButton(
-        onPressed: () {},
-        icon: Icon(Icons.clear),
-      )
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    //  buildLeading
-    return IconButton(
-        onPressed: () {},
-        icon: AnimatedIcon(
-          icon: AnimatedIcons.menu_arrow,
-          progress: transitionAnimation,
-        ));
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
-    throw UnimplementedError();
   }
 }
