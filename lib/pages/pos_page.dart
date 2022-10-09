@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -15,21 +17,27 @@ class _ProfileState extends State<Profile> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 60,
+            height: 50,
             color: Colors.grey,
             child: Row(
               children: [
                 SizedBox(
-                  width: 20,
+                  width: 25,
                 ),
                 AnimSearchBar(
-                    width: 400,
+                    width: 1275,
                     textController: textController,
                     onSuffixTap: () {
                       setState(() {
                         textController.clear();
                       });
-                    })
+                    }),
+                SizedBox(
+                  width: 50,
+                ),
+                Container(
+                  child: Text('LOCATION'),
+                )
               ],
             ),
           ),
@@ -39,43 +47,64 @@ class _ProfileState extends State<Profile> {
               children: [
                 Container(
                   width: 1275,
-                  height: 350,
-                  child: Table(
-                      border: TableBorder.all(color: Colors.green, width: 1.5),
-                      children: const [
-                        TableRow(children: [
-                          Text(
-                            "1",
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            ),
+                  height: 500,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                  ),
+                  child: DataTable(
+                    columns: <DataColumn>[
+                      DataColumn(
+                        label: Expanded(
+                          child: Text(
+                            'ItemNO',
+                            style: TextStyle(fontStyle: FontStyle.normal),
                           ),
-                          Text(
-                            "Mohit",
-                            style: TextStyle(fontSize: 15.0),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                          child: Text(
+                            'DESCRIPTION',
+                            style: TextStyle(fontStyle: FontStyle.normal),
                           ),
-                          Text(
-                            "25",
-                            style: TextStyle(fontSize: 15.0),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                          child: Text(
+                            'QTY',
+                            style: TextStyle(fontStyle: FontStyle.normal),
                           ),
-                        ]),
-                        TableRow(children: [
-                          Text(
-                            "1",
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            ),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                          child: Text(
+                            'PRICE',
+                            style: TextStyle(fontStyle: FontStyle.normal),
                           ),
-                          Text(
-                            "Mohit",
-                            style: TextStyle(fontSize: 15.0),
-                          ),
-                          Text(
-                            "25",
-                            style: TextStyle(fontSize: 15.0),
-                          ),
-                        ]),
-                      ]),
+                        ),
+                      ),
+                    ],
+                    rows: <DataRow>[
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('1001')),
+                          DataCell(Text('Laptop')),
+                          DataCell(Text('1')),
+                          DataCell(Text('100')),
+                        ],
+                      ),
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text('1001')),
+                          DataCell(Text('Laptop')),
+                          DataCell(Text('1')),
+                          DataCell(Text('100')),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0),

@@ -15,7 +15,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-// in the same i will add all the pages.... now...
-
-// ok i have added it
