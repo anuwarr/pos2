@@ -1,7 +1,5 @@
-import 'dart:html';
-
-import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:url_navigation_web/const/search_bar.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -9,35 +7,29 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  TextEditingController textController = TextEditingController();
+  String searchValue = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       body: Column(
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
             height: 50,
-            color: Colors.grey,
+            color: Colors.red,
             child: Row(
               children: [
                 SizedBox(
                   width: 25,
                 ),
-                AnimSearchBar(
-                    width: 1275,
-                    textController: textController,
-                    onSuffixTap: () {
-                      setState(() {
-                        textController.clear();
-                      });
-                    }),
-                SizedBox(
-                  width: 50,
+                Center(child: SearchBar()),
+                Expanded(
+                  child: Container(
+                    child: Text('Location'),
+                  ),
                 ),
-                Container(
-                  child: Text('LOCATION'),
-                )
               ],
             ),
           ),
@@ -45,12 +37,13 @@ class _ProfileState extends State<Profile> {
             padding: const EdgeInsets.only(left: 20.0, top: 20.0),
             child: Row(
               children: [
+                //Item table
                 Container(
                   width: 1275,
-                  height: 500,
+                  height: 590,
                   decoration: BoxDecoration(
-                    border: Border.all(),
-                  ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(9.0)),
                   child: DataTable(
                     columns: <DataColumn>[
                       DataColumn(
@@ -106,23 +99,35 @@ class _ProfileState extends State<Profile> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30.0),
-                  child: Container(
-                    width: 300,
-                    height: 200,
-                    color: Colors.deepOrange,
+                Expanded(
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: SizedBox(
+                      child: GridView.builder(
+                          itemCount: 6,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                color: Colors.red,
+                              ),
+                            );
+                          }),
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20.0, top: 20.0),
+            padding: const EdgeInsets.only(left: 20.0, top: 20.0, bottom: 10),
             child: Row(
               children: [
                 Container(
-                    height: 250,
+                    height: MediaQuery.of(context).size.height * 0.26,
                     width: 320,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
@@ -138,14 +143,14 @@ class _ProfileState extends State<Profile> {
                   padding: const EdgeInsets.only(left: 20),
                   child: Container(
                     color: Colors.brown,
-                    height: 250,
+                    height: MediaQuery.of(context).size.height * 0.26,
                     width: 935,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0),
                   child: Container(
-                    height: 250,
+                    height: MediaQuery.of(context).size.height * 0.26,
                     width: 400,
                     color: Colors.green,
                   ),
