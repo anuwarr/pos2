@@ -12,18 +12,18 @@ class Flurorouter {
 
   static Handler _mainHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
-          LandingPage(page: params['name'][0])); // this one is for one paramter passing...
+          LandingPage(
+              page: params['name']
+                  [0])); // this one is for one paramter passing...
 
-  // lets create for two parameters tooo...
   static Handler _mainHandler2 = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
-          LandingPage(page: params['name'][0],extra: params['extra'][0],));
+          LandingPage(
+            page: params['name'][0],
+            extra: params['extra'][0],
+          ));
 
-  // ok its all set now .....
-  // now lets have a handler for passing parameter tooo....
-
-
-  static void setupRouter(){
+  static void setupRouter() {
     router.define(
       '/',
       handler: _splashHandler,
@@ -40,5 +40,4 @@ class Flurorouter {
       transitionType: TransitionType.fadeIn,
     );
   }
-
 }
