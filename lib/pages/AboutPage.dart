@@ -19,6 +19,3 @@ class About extends StatelessWidget {
     );
   }
 }
-
-
-// only in this page i have added the name parameter to check the second paramter that is passed.....

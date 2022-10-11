@@ -26,7 +26,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-// now we have to initialise the router....
-
-// thats it...all things are done now i think... :)
