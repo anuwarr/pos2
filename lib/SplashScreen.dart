@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 1000), () {
-      Navigator.pushNamed(context, '/main/home');
+    Future.delayed(const Duration(milliseconds: 3000), () {
+      Navigator.pushNamed(context, '/login');
     });
     return Scaffold(
-      body: Container(
-        child: Text(
-          'Splash Screen...',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
-        ),
-      ),
+      body: Center(
+          child: Lottie.network(
+              'https://assets8.lottiefiles.com/private_files/lf30_9kdbftpx.json')),
     );
   }
 }

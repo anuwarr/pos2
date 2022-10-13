@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:url_navigation_web/pages/AboutPage.dart';
 import 'package:url_navigation_web/pages/HelpPage.dart';
 import 'package:url_navigation_web/pages/HomePage.dart';
@@ -37,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width * 0.03,
-              color: Colors.grey[400],
+              color: Colors.red[200],
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: icons.map((e) {
@@ -47,7 +48,7 @@ class _LandingPageState extends State<LandingPage> {
                     onTap: () {
                       if (icons.indexOf(e) == 1) {
                         Navigator.pushNamed(
-                            context, '/main/${pages[icons.indexOf(e)]}/Scott');
+                            context, '/main/${pages[icons.indexOf(e)]}/about');
                       } else {
                         Navigator.pushNamed(
                             context, '/main/${pages[icons.indexOf(e)]}');
@@ -63,7 +64,7 @@ class _LandingPageState extends State<LandingPage> {
                 child: IndexedStack(
                   index: pages.indexOf(widget.page),
                   children: [
-                    Home(),
+                    DashBorad(),
                     About(widget.extra),
                     Profile(),
                     Settings(),

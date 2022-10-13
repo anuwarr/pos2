@@ -13,7 +13,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[50],
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -89,7 +89,7 @@ class _ProfileState extends State<Profile> {
                                     width: 100,
                                     child: Image(
                                       image: NetworkImage(
-                                          'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50'),
+                                          'https://ui-avatars.com/api/?background=0D8ABC&color=fff'),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -173,9 +173,11 @@ class _ProfileState extends State<Profile> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Container(
-                      color: Colors.brown,
                       height: MediaQuery.of(context).size.height * 0.26,
                       width: 935,
+                      child: Stack(
+                        children: [Text('Sub Total')],
+                      ),
                     ),
                   ),
                   Padding(
