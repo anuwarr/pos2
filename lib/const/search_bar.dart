@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:searchbar_animation/searchbar_animation.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
+
+import '../dataservice/api_call.dart';
+import '../dataservice/item_model.dart';
 
 class SearchBar extends StatefulWidget {
   const SearchBar({Key key}) : super(key: key);
@@ -13,14 +16,23 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       width: 1275,
-      child: SearchBarAnimation(
-        textEditingController: textEditingController,
-        isOriginalAnimation: false,
-        buttonBorderColour: Colors.black45,
-        buttonIcon: Icons.search,
-        onFieldSubmitted: (String value) {
-          debugPrint('onfi');
+      child: TypeAheadField<ItemModel>(
+        textFieldConfiguration: TextFieldConfiguration(
+          decoration: InputDecoration(
+            prefixIcon: Icon(Icons.search),
+            border: OutlineInputBorder(),
+            hintText: 'Search',
+          ),
+        ),
+        suggestionsCallback: ItemRepository.getItems,
+        onSuggestionSelected: (ItemModel suggestion) {},
+        itemBuilder: (context, ItemModel suggestion) {
+          final item = suggestion;
+          return ListTile(
+            title: Text(item.title.toString()),
+          );
         },
       ),
     );
