@@ -1,4 +1,4 @@
-# url_navigation_web
+# POS
 
 A new Flutter project.
 
